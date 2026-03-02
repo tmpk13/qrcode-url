@@ -1,13 +1,21 @@
-<html>
-  <body>
-    <div id="qr"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script>
-      const text = new URLSearchParams(window.location.search).get("text");
-    
-      if (text) {
-        new QRCode(document.getElementById("qr"), { text, width: 200, height: 200 });
-      }
-    </script>
-  </body>
-</html
+<input id="input" placeholder="Enter URL" />
+<button onclick="generate()">Generate</button>
+<div id="qr"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  let qr = null;
+  const param = new URLSearchParams(window.location.search).get("url");
+
+  function generate(text = document.getElementById("input").value) {
+    if (!text) return;
+    const el = document.getElementById("qr");
+    el.innerHTML = "";
+    qr = new QRCode(el, { text, width: 200, height: 200 });
+  }
+
+  if (param) {
+    document.getElementById("input").value = param;
+    generate(param);
+  }
+</script>
