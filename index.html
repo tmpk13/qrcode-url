@@ -44,7 +44,7 @@
         if (document.getElementById("qr").innerHTML) generate();
       }).observe(wrap);
     
-      const param = new URLSearchParams(window.location.search).get("url");
+      const param = new URLSearchParams(window.location.search).get("text");
       if (param) {
         document.getElementById("input").value = param;
         generate(param);
