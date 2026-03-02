@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>
@@ -8,6 +9,7 @@
   <body>
     <input id="input" placeholder="Enter URL" />
     <button onclick="generate()">Generate</button>
+    <button onclick="download()">Download SVG</button>
     
     <div id="qr-wrap" style="
       display: inline-block;
@@ -18,7 +20,8 @@
       width: 200px;
       height: 200px;
     ">
-      <div id="qr"></div>
+      <div id="qr-svg"></div>
+      <div id="qr-png"></div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
@@ -29,7 +32,9 @@
         if (!text) return;
         const size = wrap.offsetWidth;
         const svg = await QRCode.toString(text, { type: "svg", width: size });
-        document.getElementById("qr").innerHTML = svg;
+        document.getElementById("qr-svg").innerHTML = svg;
+        const png = await QRCode.toString(text, { type: "png", width: size });
+        document.getElementById("qr-png").innerHTML = png;
       }
     
       new ResizeObserver(() => {
