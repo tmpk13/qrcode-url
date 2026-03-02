@@ -37,7 +37,7 @@
         const svg = await QRCode.toString(text, { type: "svg", width: size });
         document.getElementById("qr-svg").innerHTML = svg;
         const png = await QRCode.toString(text, { type: "png", width: size });
-        document.getElementById("qr-png").innerHTML = png;
+        document.getElementById("qr-png").src = png;
       }
     
       new ResizeObserver(() => {
