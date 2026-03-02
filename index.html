@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
       let qr = null;
-      const param = new URLSearchParams(window.location.search).get("url");
+      const param = new URLSearchParams(window.location.search).get("text");
     
       function generate(text = document.getElementById("input").value) {
         if (!text) return;
