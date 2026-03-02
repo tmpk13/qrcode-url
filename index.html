@@ -5,7 +5,7 @@
     <title>
       QR Code generator
     </title>
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
   </head>
   <body>
     <input id="input" placeholder="Enter URL" />
@@ -41,7 +41,7 @@
       }
     
       new ResizeObserver(() => {
-        if (document.getElementById("qr").innerHTML) generate();
+        if (document.getElementById("qr-svg").innerHTML) generate();
       }).observe(wrap);
     
       const param = new URLSearchParams(window.location.search).get("text");
