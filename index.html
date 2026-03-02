@@ -3,6 +3,7 @@
     <title>
       QR Code generator
     </title>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
   </head>
   <body>
     <input id="input" placeholder="Enter URL" />
@@ -39,6 +40,19 @@
       if (param) {
         document.getElementById("input").value = param;
         generate(param);
+      }
+
+      function download() {
+        const svg = document.getElementById("qr").innerHTML;
+        if (!svg) return;
+      
+        const blob = new Blob([svg], { type: "image/svg+xml" });
+        const a = Object.assign(document.createElement("a"), {
+          href: URL.createObjectURL(blob),
+          download: "qrcode.svg",
+        });
+        a.click();
+        URL.revokeObjectURL(a.href);
       }
     </script>
   <body>
